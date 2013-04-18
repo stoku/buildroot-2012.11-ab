@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Buildroot 2012.11-gc3dff20-dirty Configuration
+# Buildroot 2012.11-g27a53ea Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 # BR2_arm is not set
@@ -187,19 +187,15 @@ BR2_PTHREADS_NATIVE=y
 #
 BR2_TARGET_GENERIC_HOSTNAME="buildroot"
 BR2_TARGET_GENERIC_ISSUE="Welcome to Buildroot"
-BR2_ROOTFS_DEVICE_CREATION_STATIC=y
+# BR2_ROOTFS_DEVICE_CREATION_STATIC is not set
 # BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_DEVTMPFS is not set
 # BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_MDEV is not set
-# BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_UDEV is not set
+BR2_ROOTFS_DEVICE_CREATION_DYNAMIC_UDEV=y
 BR2_INIT_BUSYBOX=y
 # BR2_INIT_SYSV is not set
-
-#
-# systemd requires largefile, wchar, IPv6, threads and udev support
-#
+# BR2_INIT_SYSTEMD is not set
 # BR2_INIT_NONE is not set
 BR2_ROOTFS_DEVICE_TABLE="system/device_table.txt"
-BR2_ROOTFS_STATIC_DEVICE_TABLE="system/device_table_dev.txt"
 # BR2_ROOTFS_SKELETON_DEFAULT is not set
 BR2_ROOTFS_SKELETON_CUSTOM=y
 BR2_ROOTFS_SKELETON_CUSTOM_PATH="system/actlinux-alpha-skeleton"
@@ -262,7 +258,7 @@ BR2_PACKAGE_BUSYBOX_SHOW_OTHERS=y
 # BR2_PACKAGE_OPROFILE is not set
 # BR2_PACKAGE_RAMSPEED is not set
 # BR2_PACKAGE_RT_TESTS is not set
-# BR2_PACKAGE_STRACE is not set
+BR2_PACKAGE_STRACE=y
 # BR2_PACKAGE_STRESS is not set
 # BR2_PACKAGE_SYSPROF is not set
 # BR2_PACKAGE_WHETSTONE is not set
@@ -459,12 +455,12 @@ BR2_PACKAGE_MTD_UBIUPDATEVOL=y
 # BR2_PACKAGE_SYSSTAT is not set
 # BR2_PACKAGE_TI_UTILS is not set
 # BR2_PACKAGE_UBOOT_TOOLS is not set
-
-#
-# udev requires /dev mgmnt set to udev under System configuration
-#
+BR2_PACKAGE_UDEV=y
+# BR2_PACKAGE_UDEV_RULES_GEN is not set
+# BR2_PACKAGE_UDEV_ALL_EXTRAS is not set
 # BR2_PACKAGE_USB_MODESWITCH is not set
 # BR2_PACKAGE_USB_MODESWITCH_DATA is not set
+# BR2_PACKAGE_USBMOUNT is not set
 # BR2_PACKAGE_USBUTILS is not set
 # BR2_PACKAGE_WIPE is not set
 
@@ -773,6 +769,7 @@ BR2_PACKAGE_LIBDAEMON=y
 # BR2_PACKAGE_NETPLUG is not set
 # BR2_PACKAGE_NETSNMP is not set
 # BR2_PACKAGE_NETSTAT_NAT is not set
+# BR2_PACKAGE_NETWORK_MANAGER is not set
 # BR2_PACKAGE_NFACCT is not set
 # BR2_PACKAGE_NOIP is not set
 # BR2_PACKAGE_NGIRCD is not set
@@ -877,10 +874,7 @@ BR2_PACKAGE_KMOD=y
 #
 # supervisor needs the python interpreter
 #
-
-#
-# systemd not available (depends on /dev management with udev and ipv6 support, and thread support in toolchain)
-#
+# BR2_PACKAGE_SYSTEMD is not set
 BR2_PACKAGE_UTIL_LINUX=y
 # BR2_PACKAGE_UTIL_LINUX_MOUNT is not set
 # BR2_PACKAGE_UTIL_LINUX_FSCK is not set
