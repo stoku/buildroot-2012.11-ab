@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Buildroot 2012.11-g27a53ea Configuration
+# Buildroot 2012.11-g05c66f4 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 # BR2_arm is not set
@@ -373,7 +373,7 @@ BR2_PACKAGE_MTD_FLASH_UNLOCK=y
 # BR2_PACKAGE_MTD_FTL_CHECK is not set
 # BR2_PACKAGE_MTD_FTL_FORMAT is not set
 # BR2_PACKAGE_MTD_JFFS2DUMP is not set
-# BR2_PACKAGE_MTD_MKFSJFFS2 is not set
+BR2_PACKAGE_MTD_MKFSJFFS2=y
 BR2_PACKAGE_MTD_MTD_DEBUG=y
 BR2_PACKAGE_MTD_NANDDUMP=y
 BR2_PACKAGE_MTD_NANDTEST=y
@@ -508,8 +508,8 @@ BR2_PACKAGE_UDEV=y
 # Compression and decompression
 #
 # BR2_PACKAGE_LIBARCHIVE is not set
-# BR2_PACKAGE_LZO is not set
-# BR2_PACKAGE_ZLIB is not set
+BR2_PACKAGE_LZO=y
+BR2_PACKAGE_ZLIB=y
 
 #
 # Crypto
@@ -548,18 +548,18 @@ BR2_PACKAGE_UDEV=y
 # BR2_PACKAGE_ATK is not set
 # BR2_PACKAGE_CAIRO is not set
 # BR2_PACKAGE_FONTCONFIG is not set
-# BR2_PACKAGE_FREETYPE is not set
+BR2_PACKAGE_FREETYPE=y
 # BR2_PACKAGE_IMLIB2 is not set
-# BR2_PACKAGE_JPEG is not set
+BR2_PACKAGE_JPEG=y
 # BR2_PACKAGE_LIBART is not set
 # BR2_PACKAGE_LIBDMTX is not set
 # BR2_PACKAGE_LIBEXIF is not set
 # BR2_PACKAGE_LIBGEOTIFF is not set
 # BR2_PACKAGE_GDK_PIXBUF is not set
-# BR2_PACKAGE_LIBPNG is not set
+BR2_PACKAGE_LIBPNG=y
 # BR2_PACKAGE_LIBRAW is not set
 # BR2_PACKAGE_LIBSVGTINY is not set
-# BR2_PACKAGE_LIBUNGIF is not set
+BR2_PACKAGE_LIBUNGIF=y
 # BR2_PACKAGE_OPENCV is not set
 # BR2_PACKAGE_PANGO is not set
 # BR2_PACKAGE_PIXMAN is not set
