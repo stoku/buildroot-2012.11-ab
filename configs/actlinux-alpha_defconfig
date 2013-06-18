@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Buildroot 2012.11-00009-g65fe248 Configuration
+# Buildroot 2012.11-ab-1.0.0-00010-g46f08f6-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 # BR2_arm is not set
@@ -931,11 +931,7 @@ BR2_PACKAGE_UTIL_LINUX_LIBBLKID=y
 # BR2_TARGET_ROOTFS_UBIFS is not set
 # BR2_TARGET_ROOTFS_SQUASHFS is not set
 # BR2_TARGET_ROOTFS_TAR is not set
-BR2_TARGET_ROOTFS_CPIO=y
-# BR2_TARGET_ROOTFS_CPIO_NONE is not set
-BR2_TARGET_ROOTFS_CPIO_GZIP=y
-# BR2_TARGET_ROOTFS_CPIO_BZIP2 is not set
-# BR2_TARGET_ROOTFS_CPIO_LZMA is not set
+# BR2_TARGET_ROOTFS_CPIO is not set
 
 #
 # initramfs requires a Linux kernel to be built
