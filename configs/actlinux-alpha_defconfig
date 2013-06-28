@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Buildroot 2012.11-ab-1.0.0-00012-g2df482d Configuration
+# Buildroot 2012.11-ab-1.0.0-00013-g3615a5a-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 # BR2_arm is not set
@@ -919,6 +919,7 @@ BR2_PACKAGE_UTIL_LINUX_LIBBLKID=y
 # BR2_PACKAGE_HOST_LPC3250LOADER is not set
 # BR2_PACKAGE_HOST_OPENOCD is not set
 # BR2_PACKAGE_HOST_SAM_BA is not set
+BR2_PACKAGE_HOST_GETTEXT=y
 # BR2_PACKAGE_HOST_UBOOT_TOOLS is not set
 
 #

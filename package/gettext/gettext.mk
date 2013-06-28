@@ -19,6 +19,16 @@ GETTEXT_CONF_OPT += \
 	--disable-relocatable \
 	--without-emacs
 
+HOST_GETTEXT_CONF_OPT += \
+	--disable-libasprintf \
+	--disable-openmp \
+	--disable-rpath \
+	--disable-java \
+	--disable-native-java \
+	--disable-csharp \
+	--disable-relocatable \
+	--without-emacs
+
 # Force build with NLS support, otherwise libintl is not built
 # This is needed because some packages (eg. libglib2) requires
 # locales, but do not properly depend on BR2_ENABLE_LOCALE, and
@@ -37,3 +47,4 @@ endef
 endif # GETTEXT_TOOLS = n
 
 $(eval $(autotools-package))
+$(eval $(host-autotools-package))

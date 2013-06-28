@@ -1,0 +1,8 @@
+config BR2_PACKAGE_HOST_GETTEXT
+	bool "host gettext"
+	help
+	  The GNU `gettext' utilities are a set of tools that provide a
+	  framework to help other GNU packages produce multi-lingual
+	  messages..
+
+	  http://www.gnu.org/software/gettext/
