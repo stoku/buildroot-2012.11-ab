@@ -677,6 +677,19 @@ source "package/rpm/Config.in"
 endif
 endmenu
 
+menu "Renesas SH specific libraries"
+source "package/uiomux/Config.in"
+source "package/shveu/Config.in"
+source "package/shbeu/Config.in"
+source "package/shcodecs/Config.in"
+source "package/shjpeg/Config.in"
+source "package/omxil-sh/Config.in"
+source "package/sighttpd/Config.in"
+source "package/gst-sh-mobile/Config.in"
+source "package/gst-shrtsp/Config.in"
+source "package/multimedia-demo/Config.in"
+endmenu
+
 menu "Real-Time"
 source "package/xenomai/Config.in"
 source "package/rtai/Config.in"

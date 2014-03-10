@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# autostart	This script search and run autostart script in mtd partitions.
+#		The mtdblock that contains the script is mounted on
+#		usr/local or /opt with respect to the mtd partition name
+#		(local or local[0-9] to /usr/local, opt or opt[0-9] to /opt).
+#
+
+AUTOSTART=autostart
+
+mount_mtd() {
+	[ -d "$2" ] || mkdir -p "$2"; dircreated=yes || return 1
+	mtds=`cat /proc/mtd | grep -E \""$1[0-9]?"\" | cut -d: -f1`
+	for mtd in $mtds; do
+		i=`echo "$mtds" | cut -c4-`
+		if mount -t jffs2 -o noatime "/dev/mtdblock$i" "$2"; then
+			if [ -x "$2/$AUTOSTART" ]; then
+				echo "mounted /dev/mtdblock$i on $2"
+				echo "start $2/$AUTOSTART"
+				eval "$2/$AUTOSTART"
+				return 0
+			else
+				umount "$2"
+			fi
+		fi
+	done
+	[ "$dircreated" = "yes" ] && rmdir "$2"
+	return 1
+}
+
+umount_mtd() {
+	if mount | grep " on $1 " > /dev/null 2>&1; then
+		umount "$1" && echo "$1" unmounted
+	fi
+}
+
+case "$1" in
+  start)
+	mount_mtd "local" "/usr/local" ||
+	mount_mtd "opt" "/opt"
+	;;
+  stop)
+	umount_mtd "/opt"
+	umount_mtd "/usr/local"
+	;;
+  restart|reload)
+	"$0" stop
+	"$0" start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart}"
+	exit 1
+esac
+
+exit $?
+

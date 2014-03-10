@@ -1,0 +1,16 @@
+#############################################################
+#
+# uiomux
+#
+#############################################################
+UIOMUX_VERSION = 1.6.2
+UIOMUX_SOURCE = libuiomux-$(UIOMUX_VERSION).tar.gz
+UIOMUX_SITE = https://github.com/downloads/pedwo/libuiomux
+
+UIOMUX_AUTORECONF = YES
+UIOMUX_INSTALL_STAGING = YES
+UIOMUX_INSTALL_TARGET = YES
+
+UIOMUX_DEPENDENCIES = host-pkgconf
+
+$(eval $(autotools-package))

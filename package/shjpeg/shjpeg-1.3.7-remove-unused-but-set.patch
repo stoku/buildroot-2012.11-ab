@@ -1,0 +1,111 @@
+diff --git a/tests/libjpeg_thread.c b/tests/libjpeg_thread.c
+index 0660b8e..d132e33 100644
+--- a/tests/libjpeg_thread.c
++++ b/tests/libjpeg_thread.c
+@@ -236,9 +236,7 @@ int
+ main(int argc, char *argv[])
+ {
+     char		  *input1, *input2;
+-    char		  *dumpfn = NULL;
+     int			   verbose = 0;
+-    int			   dump = 0;
+     int			   quiet = 0;
+     int			   count = 50;
+     char		   *argv0 = NULL;
+@@ -255,7 +253,6 @@ main(int argc, char *argv[])
+ 	    {"help", 0, 0, 'h'},
+ 	    {"verbose", 0, 0, 'v'},
+ 	    {"quiet", 0, 0, 'q'},
+-	    {"dump", 2, 0, 'd'},
+ 	    {"mem", 0, 0, 'm'},
+ 	    {"stdio", 0, 0, 's'},
+ 	    {"yuv", 0, 0, 'y'},
+@@ -263,7 +260,7 @@ main(int argc, char *argv[])
+ 	    {0, 0, 0, 0}
+ 	};
+ 
+-	if ((c = getopt_long(argc, argv, "hvd::qmsyc:",
++	if ((c = getopt_long(argc, argv, "hvqmsyc:",
+ 			     long_options, &option_index)) == -1)
+ 	    break;
+ 
+@@ -276,12 +273,6 @@ main(int argc, char *argv[])
+ 	    verbose = 1;
+ 	    break;
+ 
+-	case 'd':
+-	    dump = 1;
+-	    if (optarg)
+-		dumpfn = optarg;
+-	    break;
+-
+ 	case 'c':
+ 	    count = atoi(optarg);
+ 	    break;
+diff --git a/tests/shjpeg_multithread.c b/tests/shjpeg_multithread.c
+index 5161cb6..8bc07ff 100644
+--- a/tests/shjpeg_multithread.c
++++ b/tests/shjpeg_multithread.c
+@@ -116,7 +116,7 @@ void write_framebuffer(void *fb_buffer,
+ 
+ 	copy_height = height > fb_vinfo.yres ? fb_vinfo.yres : height;
+ 	copy_width = width > (fb_vinfo.xres / 2) ? (fb_vinfo.xres / 2): width;
+-	for (i = 0; i < height; i++) {
++	for (i = 0; i < copy_height; i++) {
+ 		memcpy(fb_buffer, data_buf, copy_width *
+ 					fb_vinfo.bits_per_pixel / 8);
+ 		fb_buffer += fb_info.line_length;
+@@ -254,7 +254,6 @@ int
+ main(int argc, char *argv[])
+ {
+     int			   count = -1;
+-    int			   quiet = 0;
+     struct decode_data     decode_inst1, decode_inst2;
+     pthread_t		   tid1, tid2;
+     void		  *fb_buffer;
+@@ -267,12 +266,11 @@ main(int argc, char *argv[])
+ 	int c, option_index = 0;
+ 	static struct option   long_options[] = {
+ 	    {"help", 0, 0, 'h'},
+-	    {"quiet", 0, 0, 'q'},
+ 	    {"count", 1, 0, 'c'},
+ 	    {0, 0, 0, 0}
+ 	};
+ 
+-	if ((c = getopt_long(argc, argv, "hc:q",
++	if ((c = getopt_long(argc, argv, "hc:",
+ 			     long_options, &option_index)) == -1)
+ 	    break;
+ 
+@@ -285,10 +283,6 @@ main(int argc, char *argv[])
+ 	    count =  strtol(optarg, NULL, 0);
+ 	    break;
+ 
+-	case 'q':
+-	    quiet = 1;
+-	    break;
+-
+ 	default:
+ 	    fprintf(stderr, "unknown option 0%x.\n", c);
+ 	    print_usage();
+diff --git a/tests/shjpegtest.c b/tests/shjpegtest.c
+index 1de49bb..12ec06b 100644
+--- a/tests/shjpegtest.c
++++ b/tests/shjpegtest.c
+@@ -88,7 +88,7 @@ void write_bmp(const char *filename, int bpp,
+ 	       unsigned long phys, int pitch, int width, int height)
+ {
+     bmp_header_t bmp_header;
+-    int h, w, bw, size, raw_size, stride;
++    int h, w, size, raw_size, stride;
+     void *mem, *ptr;
+     FILE *file;
+     char *buffer = NULL, tmp;
+@@ -155,7 +155,6 @@ void write_bmp(const char *filename, int bpp,
+     fwrite(&bmp_header, 1, sizeof(bmp_header), file);
+ 
+     /* Write data */
+-    bw = bpp >> 3;
+ //    mem += (height - 1) * pitch;
+     ptr = mem;
+     for (h = 0; h < height; h++) {
