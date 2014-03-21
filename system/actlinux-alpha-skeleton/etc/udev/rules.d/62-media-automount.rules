@@ -3,12 +3,10 @@
 ENV{DEVTYPE}!="partition", GOTO="media_automount_end"
 ENV{DEVNAME}!="?*", GOTO="media_automount_end"
 ENV{ID_FS_TYPE}!="?*", GOTO="media_automount_end"
-ENV{ID_FS_LABEL}!="?*", GOTO="media_automount_end"
 ACTION!="add|remove", GOTO="media_automount_end"
+KERNEL!="sd[a-z][1-9]|mmcblk[0-9]p[1-9]", GOTO="media_automount_end"
 
-# usb-storage or sdhc
-ACTION=="add", KERNEL=="sd[a-z][0-9]|mmcblk[0-9]p[0-9]", ENV{MOUNT_POINT}="/media/%k-$env{ID_FS_LABEL}"
-
+ACTION=="add", ENV{MOUNT_POINT}="/media/%k"
 ENV{MOUNT_POINT}!="?*", GOTO="media_automount_end"
 
 # mount
@@ -16,6 +14,6 @@ ACTION=="add", ENV{ID_FS_TYPE}=="vfat", ENV{.MOUNT_OPTION}="-o codepage=932,ioch
 ACTION=="add", RUN+="/bin/mkdir $env{MOUNT_POINT}", RUN+="/bin/mount -t $env{ID_FS_TYPE} $env{.MOUNT_OPTION} $env{DEVNAME} $env{MOUNT_POINT}"
 
 # unmount
-ACTION=="remove", RUN+="/bin/umount -f $env{MOUNT_POINT}" RUN+="/bin/rmdir $env{MOUNT_POINT}"
+ACTION=="remove", RUN+="/bin/umount -f $env{MOUNT_POINT}", RUN+="/bin/rmdir $env{MOUNT_POINT}"
 
 LABEL="media_automount_end"
