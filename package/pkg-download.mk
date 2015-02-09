@@ -54,6 +54,9 @@ notdomain=$(patsubst $(call domain,$(1),$(2))$(call domainseparator,$(2))%,%,$(c
 # default domainseparator is /, specify alternative value as first argument
 domainseparator=$(if $(1),$(1),/)
 
+# wget output option
+wgetoutputoption=$(if $(findstring curl,$(firstword $(1))),-o,-O)
+
 ################################################################################
 # The DOWNLOAD_{GIT,SVN,BZR,HG,LOCALFILES} helpers are in charge of getting a
 # working copy of the source repository for their corresponding SCM,
@@ -182,7 +185,7 @@ endef
 # the next time the download is tried.
 define DOWNLOAD_WGET
 	test -e $(DL_DIR)/$(2) || \
-	($(WGET) -O $(DL_DIR)/$(2).tmp '$(call qstrip,$(1))' && \
+	($(WGET) $(call wgetoutputoption,$(WGET)) $(DL_DIR)/$(2).tmp '$(call qstrip,$(1))' && \
 	 mv $(DL_DIR)/$(2).tmp $(DL_DIR)/$(2)) || \
 	(rm -f $(DL_DIR)/$(2).tmp ; exit 1)
 endef

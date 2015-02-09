@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Buildroot 2012.11-ab-1.0.0-dirty Configuration
+# Buildroot 2012.11-ab-1.1.1-dirty Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 # BR2_arm is not set
@@ -39,7 +39,7 @@ BR2_sh4a=y
 #
 # Commands
 #
-BR2_WGET="wget --passive-ftp -nd -t 3"
+BR2_WGET="curl -fL"
 BR2_SVN="svn"
 BR2_BZR="bzr"
 BR2_GIT="git"
